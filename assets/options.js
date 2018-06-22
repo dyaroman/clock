@@ -1,3 +1,1 @@
-module.exports = {
-  "person": "Roman Dyachenko"
-};
+module.exports = {};
