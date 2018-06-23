@@ -37,8 +37,15 @@ body {
   &__item {
     position: absolute;
     background-color: #000;
-    transition: 0.3s;
+    opacity: 0;
+    transform: rotate(360deg);
+    transition: 0.5s;
   }
+  &__item--action {
+    opacity: 1;
+    transform: rotate(0);
+  }
+
   &__item--0 {
     top: 0;
     left: 0;

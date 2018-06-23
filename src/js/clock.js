@@ -41,19 +41,33 @@
   const displayDigit = (el, arr) => {
     const $digit = document.querySelectorAll('.digit');
     const $digitItems = $digit[el].querySelectorAll('.digit__item');
+    const animateClass = 'digit__item--action';
 
     for (let i = 0; i < $digitItems.length; i++) {
-      $digitItems[i].style.opacity = '0';
+      $digitItems[i].classList.remove(animateClass);
       arr.forEach(item => {
         if ($digitItems[i].classList.contains(`digit__item--${item}`)) {
-          $digitItems[i].style.opacity = '1';
+          $digitItems[i].classList.add(animateClass);
         }
       });
     }
   };
 
-  displayDigit(0, convertDigitInArray(2));
-  displayDigit(1, convertDigitInArray(1));
-  displayDigit(2, convertDigitInArray(4));
-  displayDigit(3, convertDigitInArray(0));
+  const getArrayFromTime = () => {
+    const time = new Date();
+    let str = '';
+    str += (time.getHours().toString().length === 1 ? `0${time.getHours()}` : time.getHours());
+    str += (time.getMinutes().toString());
+    str += (time.getSeconds().toString().length === 1 ? `0${time.getSeconds()}` : time.getSeconds());
+    return str.split('').map(i => parseInt(i));
+  };
+
+  const go = () => {
+    getArrayFromTime().forEach((i, index) => {
+      displayDigit(index, convertDigitInArray(i));
+    });
+  };
+  go();
+  setInterval(go, 1000);
+
 })();
