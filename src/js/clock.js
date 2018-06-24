@@ -57,7 +57,7 @@
     const time = new Date();
     let str = '';
     str += (time.getHours().toString().length === 1 ? `0${time.getHours()}` : time.getHours());
-    str += (time.getMinutes().toString());
+    str += (time.getMinutes().toString().length === 1 ? `0${time.getMinutes()}` : time.getMinutes());
     str += (time.getSeconds().toString().length === 1 ? `0${time.getSeconds()}` : time.getSeconds());
     return str.split('').map(i => parseInt(i));
   };
