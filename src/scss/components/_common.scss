@@ -98,10 +98,17 @@ body {
   align-items: center;
   width: $gap / 2;
   height: $gap * 2;
+  animation: blink 1s linear infinite;
 
   &__item {
     width: 2px;
     height: 2px;
     background-color: #000;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
