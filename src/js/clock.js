@@ -56,9 +56,9 @@
   const getArrayFromTime = () => {
     const time = new Date();
     let str = '';
-    str += (time.getHours().toString().length === 1 ? `0${time.getHours()}` : time.getHours());
-    str += (time.getMinutes().toString().length === 1 ? `0${time.getMinutes()}` : time.getMinutes());
-    str += (time.getSeconds().toString().length === 1 ? `0${time.getSeconds()}` : time.getSeconds());
+    str += (time.getHours() < 10 ? `0${time.getHours()}` : time.getHours());
+    str += (time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes());
+    str += (time.getSeconds() < 10 ? `0${time.getSeconds()}` : time.getSeconds());
     return str.split('').map(i => parseInt(i));
   };
 
@@ -67,7 +67,7 @@
       displayDigit(index, convertDigitInArray(i));
     });
   };
+
   showTime();
   setInterval(showTime, 1000);
-
 })();
