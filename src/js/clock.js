@@ -1,5 +1,5 @@
 (() => {
-  const $clock = document.querySelector('.js_clock');
+  // const $clock = document.querySelector('.js_clock');
 
   const convertDigitInArray = num => {
     const arr = [];
@@ -62,12 +62,12 @@
     return str.split('').map(i => parseInt(i));
   };
 
-  const go = () => {
+  const showTime = () => {
     getArrayFromTime().forEach((i, index) => {
       displayDigit(index, convertDigitInArray(i));
     });
   };
-  go();
-  setInterval(go, 1000);
+  showTime();
+  setInterval(showTime, 1000);
 
 })();
