@@ -1,7 +1,12 @@
-(() => {
-  // const $clock = document.querySelector('.js_clock');
+class Clock {
+  constructor() {
+    this.showTime();
+    setInterval(() => {
+      this.showTime();
+    }, 1000);
+  }
 
-  const convertDigitInArray = num => {
+  convertDigitInArray(num) {
     const arr = [];
     switch (num) {
       case 0:
@@ -36,9 +41,18 @@
         break;
     }
     return arr;
-  };
+  }
 
-  const displayDigit = (el, arr) => {
+  getArrayFromTime() {
+    const time = new Date();
+    let str = '';
+    str += (time.getHours() < 10 ? `0${time.getHours()}` : time.getHours());
+    str += (time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes());
+    str += (time.getSeconds() < 10 ? `0${time.getSeconds()}` : time.getSeconds());
+    return str.split('').map(i => parseInt(i));
+  }
+
+  displayDigit(el, arr) {
     const $digit = document.querySelectorAll('.digit');
     const $digitItems = $digit[el].querySelectorAll('.digit__item');
     const animateClass = 'digit__item--action';
@@ -51,23 +65,13 @@
         }
       });
     }
-  };
+  }
 
-  const getArrayFromTime = () => {
-    const time = new Date();
-    let str = '';
-    str += (time.getHours() < 10 ? `0${time.getHours()}` : time.getHours());
-    str += (time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes());
-    str += (time.getSeconds() < 10 ? `0${time.getSeconds()}` : time.getSeconds());
-    return str.split('').map(i => parseInt(i));
-  };
-
-  const showTime = () => {
-    getArrayFromTime().forEach((i, index) => {
-      displayDigit(index, convertDigitInArray(i));
+  showTime() {
+    this.getArrayFromTime().forEach((i, index) => {
+      this.displayDigit(index, this.convertDigitInArray(i));
     });
-  };
+  }
+}
 
-  showTime();
-  setInterval(showTime, 1000);
-})();
+const clock = new Clock();
