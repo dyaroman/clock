@@ -1,9 +1,48 @@
 class Clock {
-  constructor() {
+  constructor(cssSelector) {
+    this.renderClock(cssSelector);
     this.showTime();
     setInterval(() => {
       this.showTime();
     }, 1000);
+  }
+
+  renderDigit() {
+    return `
+    <div class="clock__digit digit">
+      <div class="digit__item digit__item--0"></div>
+      <div class="digit__item digit__item--1"></div>
+      <div class="digit__item digit__item--2"></div>
+      <div class="digit__item digit__item--3"></div>
+      <div class="digit__item digit__item--4"></div>
+      <div class="digit__item digit__item--5"></div>
+      <div class="digit__item digit__item--6"></div>
+    </div>
+    `;
+  }
+
+  renderDivider() {
+    return `
+    <div class="clock__divider divider">
+      <div class="divider__item"></div>
+      <div class="divider__item"></div>
+    </div>
+    `;
+  }
+
+  renderClock(cssSelector) {
+    const clockHolder = document.querySelector(cssSelector);
+    const clock = document.createElement('div');
+    clock.classList.add('js_clock', 'clock');
+
+    this.getArrayFromTime().forEach((i, index) => {
+      clock.innerHTML += this.renderDigit();
+      if (index % 2 === 1 && index !== this.getArrayFromTime().length - 1) {
+        clock.innerHTML += this.renderDivider();
+      }
+    });
+
+    clockHolder.appendChild(clock);
   }
 
   convertDigitInArray(num) {
@@ -74,4 +113,4 @@ class Clock {
   }
 }
 
-const clock = new Clock();
+const clock = new Clock('.clock_holder');
