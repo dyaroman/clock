@@ -1,15 +1,28 @@
 .divider {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: ~"calc(var(--gap) / 2)";
-  height: ~"calc(var(--gap) * 2)";
+  position: relative;
+  display: block;
+  width: ~"calc(var(--line, 5px) * 10)";
+  height: ~"calc(var(--line, 5px) * 10 * 2 - var(--line, 5px))";
   animation: blink 1s linear infinite;
-  &__item {
-    width: ~"calc(var(--gap) / 10)";
-    height: ~"calc(var(--gap) / 10)";
-    background-color: var(--fill-color, #000);
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: var(--line, 5px);
+    height: var(--line, 5px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+  }
+
+  &:after {
+    top: 25%;
+  }
+
+  &:before {
+    top: 75%;
   }
 }
 

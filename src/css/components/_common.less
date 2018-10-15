@@ -1,9 +1,9 @@
 :root {
-  --gap: 60px;
+  --line: 10px;
   --fill-color: #000;
   --bg-color: #ccc;
   @media (max-width: 767px) {
-    --gap: 30px;
+    --line: 5px;
   }
 }
 
@@ -31,7 +31,7 @@ body {
 .clock {
   display: flex;
   &__digit {
-    margin-left: ~"calc(var(--gap) / 5)";
-    margin-right: ~"calc(var(--gap) / 5)";
+    margin-left: var(--line);
+    margin-right: var(--line);
   }
 }
