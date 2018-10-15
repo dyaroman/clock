@@ -1,0 +1,20 @@
+.divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: ~"calc(var(--gap) / 2)";
+  height: ~"calc(var(--gap) * 2)";
+  animation: blink 1s linear infinite;
+  &__item {
+    width: ~"calc(var(--gap) / 10)";
+    height: ~"calc(var(--gap) / 10)";
+    background-color: var(--fill-color, #000);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
