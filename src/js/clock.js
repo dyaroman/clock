@@ -10,13 +10,13 @@ class Clock {
   renderDigit() {
     return `
     <div class="clock__digit digit">
-      <div class="digit__item digit__item--0"></div>
       <div class="digit__item digit__item--1"></div>
       <div class="digit__item digit__item--2"></div>
       <div class="digit__item digit__item--3"></div>
       <div class="digit__item digit__item--4"></div>
       <div class="digit__item digit__item--5"></div>
       <div class="digit__item digit__item--6"></div>
+      <div class="digit__item digit__item--7"></div>
     </div>
     `;
   }
@@ -49,34 +49,34 @@ class Clock {
     const arr = [];
     switch (num) {
       case 0:
-        arr.push(0, 1, 2, 3, 4, 5);
+        arr.push(1, 2, 3, 4, 5, 6);
         break;
       case 1:
-        arr.push(1, 2);
+        arr.push(2, 3);
         break;
       case 2:
-        arr.push(0, 1, 3, 4, 6);
+        arr.push(1, 2, 4, 5, 7);
         break;
       case 3:
-        arr.push(0, 1, 2, 3, 6);
+        arr.push(1, 2, 3, 4, 7);
         break;
       case 4:
-        arr.push(1, 2, 5, 6);
+        arr.push(2, 3, 6, 7);
         break;
       case 5:
-        arr.push(0, 2, 3, 5, 6);
+        arr.push(1, 3, 4, 6, 7);
         break;
       case 6:
-        arr.push(0, 2, 3, 4, 5, 6);
+        arr.push(1, 3, 4, 5, 6, 7);
         break;
       case 7:
-        arr.push(0, 1, 2);
+        arr.push(1, 2, 3);
         break;
       case 8:
-        arr.push(0, 1, 2, 3, 4, 5, 6);
+        arr.push(1, 2, 3, 4, 5, 6, 7);
         break;
       case 9:
-        arr.push(0, 1, 2, 3, 5, 6);
+        arr.push(1, 2, 3, 4, 6, 7);
         break;
     }
     return arr;
