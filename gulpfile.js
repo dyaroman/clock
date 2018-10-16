@@ -35,13 +35,12 @@ gulp.task('server', () => {
   });
 });
 
-gulp.task('watch', (cb) => {
+gulp.task('watch', () => {
   htmlTask.htmlWatcher();
   stylesTask.cssWatcher();
   jsTask.jsWatcher();
   imagesTask.imagesWatcher();
   gulp.task('server')();
-  cb();
 });
 
 gulp.task('build', (cb) => {

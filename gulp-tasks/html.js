@@ -8,8 +8,8 @@ const util = require('gulp-util');
 const config = require('./_config');
 
 
-const html = (cb) => {
-  gulp.src([
+const html = () => {
+  return gulp.src([
       `./src/html/**/*.njk`,
       `!./src/html/**/_*.njk`
     ])
@@ -30,13 +30,11 @@ const html = (cb) => {
       removeStyleLinkTypeAttributes: true
     }) : util.noop())
     .pipe(gulp.dest(`./dest/`));
-  cb();
 };
 
-const watcher = (cb) => {
+const watcher = () => {
   console.log(`watch html in './src/html/**/*.njk'`);
-  gulp.watch(`./src/html/**/*.njk`, html);
-  cb();
+  return gulp.watch(`./src/html/**/*.njk`, html);
 };
 const htmlWatcher = gulp.series(html, watcher);
 
