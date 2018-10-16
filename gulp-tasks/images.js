@@ -4,25 +4,36 @@ const util = require('gulp-util');
 
 const config = require('./_config');
 
-const images = () => gulp.src([
-  `./src/images/**/*.{svg,gif,png,jpg,jpeg}`,
-  `!./src/images/favicons/*.*`
-  ])
-  .pipe(config.production ? imagemin({
-    progressive: true,
-    optimizationLevel: 5,
-    verbose: false
-  }) : util.noop())
-  .pipe(gulp.dest(`./dest/images/`));
+const images = (cb) => {
+  gulp.src([
+      `./src/images/**/*.{svg,gif,png,jpg,jpeg}`,
+      `!./src/images/favicons/*.*`
+    ])
+    .pipe(config.production ? imagemin({
+      progressive: true,
+      optimizationLevel: 5,
+      verbose: false
+    }) : util.noop())
+    .pipe(gulp.dest(`./dest/images/`));
+  cb();
+}
 
-const watcher = () => {
+const watcher = (cb) => {
   console.log(`watch images in './src/images/'`);
-  return gulp.watch(`./src/images/**/*.{svg,gif,png,jpg,jpeg}`, images);
+  gulp.watch(`./src/images/**/*.{svg,gif,png,jpg,jpeg}`, images);
+  cb();
 };
 
-const favicons = () => gulp.src(`./src/images/favicons/*.*`)
-  .pipe(gulp.dest(`./dest/images/favicons/`));
+const favicons = (cb) => {
+  gulp.src(`./src/images/favicons/*.*`)
+    .pipe(gulp.dest(`./dest/images/favicons/`));
+  cb();
+}
 
 const imagesWatcher = gulp.series(images, favicons, watcher);
 
-module.exports = {images, imagesWatcher, favicons};
+module.exports = {
+  images,
+  imagesWatcher,
+  favicons
+};
