@@ -43,11 +43,17 @@ gulp.task('watch', () => {
   gulp.task('server')();
 });
 
+gulp.task('copy', () => {
+  return gulp.src('./src/copyInRoot/**/*')
+    .pipe(gulp.dest('./dest/'));
+});
+
 gulp.task('build', (cb) => {
   gulp.task('html')();
   gulp.task('css')();
   gulp.task('js')();
   gulp.task('images')();
+  gulp.task('copy')();
 
   cb();
 });
