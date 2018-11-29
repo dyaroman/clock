@@ -1,9 +1,7 @@
 language: node_js
 node_js:
   - stable
-cache:
-  directories:
-    - node_modules
+cache: npm
 script:
   - npm run build:prod
 deploy:
@@ -11,3 +9,4 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: dest
+  keep_history: true
