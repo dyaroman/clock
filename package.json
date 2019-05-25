@@ -22,10 +22,10 @@
     "build:prod": "gulp build --production",
     "dev": "gulp watch"
   },
-  "author": "Roman Dyachenko <dyaroman@gmail.com>",
+  "author": "Roman Diachenko <dyaroman@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dyaroman/clockJS.git"
+    "url": "https://github.com/dyaroman/clock.dyaroman.com.git"
   },
   "license": "UNLICENSED",
   "private": true,
