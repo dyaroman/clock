@@ -1,8 +1,10 @@
 class Clock {
   constructor(cssSelector) {
+    this.updatePageTitle();
     this.renderClock(cssSelector);
     this.showTime();
     setInterval(() => {
+      this.updatePageTitle();
       this.showTime();
     }, 1000);
   }
@@ -83,11 +85,10 @@ class Clock {
   }
 
   getArrayFromTime() {
-    const time = new Date();
     let str = '';
-    str += (time.getHours() < 10 ? `0${time.getHours()}` : time.getHours());
-    str += (time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes());
-    str += (time.getSeconds() < 10 ? `0${time.getSeconds()}` : time.getSeconds());
+    str += this.leadZero(this.time.getHours());
+    str += this.leadZero(this.time.getMinutes());
+    str += this.leadZero(this.time.getSeconds());
     return str.split('').map(i => parseInt(i));
   }
 
@@ -111,6 +112,24 @@ class Clock {
       this.displayDigit(index, this.convertDigitInArray(i));
     });
   }
+
+  updatePageTitle() {
+    let timeString = '';
+    timeString += this.leadZero(this.time.getHours());
+    timeString += ':';
+    timeString += this.leadZero(this.time.getMinutes());
+    timeString += ':';
+    timeString += this.leadZero(this.time.getSeconds());
+    document.title = timeString;
+  }
+
+  leadZero(number) {
+    return number < 10 ? `0${number}` : `${number}`;
+  }
+
+  get time() {
+    return new Date();
+  }
 }
 
-const clock = new Clock('.clock_holder');
+new Clock('.clock_holder');
