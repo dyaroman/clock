@@ -38,7 +38,7 @@ gulp.task('watch', () => {
   htmlTask.htmlWatcher();
   stylesTask.cssWatcher();
   jsTask.jsWatcher();
-  imagesTask.imagesWatcher();
+  favicons();
   gulp.task('server')();
 });
 
