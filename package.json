@@ -18,6 +18,7 @@
   },
   "main": "gulpfile.js",
   "scripts": {
+    "test": "jest",
     "build": "gulp build",
     "build:prod": "gulp build --production",
     "start": "gulp watch"
@@ -46,6 +47,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
-    "gulp-util": "^3.0.8"
+    "gulp-util": "^3.0.8",
+    "jest": "^25.1.0"
   }
 }

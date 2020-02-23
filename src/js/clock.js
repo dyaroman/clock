@@ -1,4 +1,4 @@
-class Clock {
+export class Clock {
   constructor(cssSelector) {
     this.updatePageTitle();
     this.renderClock(cssSelector);
@@ -132,4 +132,4 @@ class Clock {
   }
 }
 
-new Clock('.clock_holder');
+export const clock = new Clock('.clock_holder');
