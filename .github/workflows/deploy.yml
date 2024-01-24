@@ -8,26 +8,14 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     steps:
-      - name: checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: use node.js
+        uses: actions/setup-node@v3
         with:
-          persist-credentials: false
-
-      - name: install nodejs
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: install dependencies
-        run: npm ci
-
-      - name: build
-        run: npm run build:prod
-
+          node-version: '20.x'
+      - run: npm ci
+      - run: npm run build:prod
       - name: deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
