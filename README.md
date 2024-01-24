@@ -1,3 +1,1 @@
-# [clock.dyaroman.com](https://clock.dyaroman.com/)
-
-[![Build Status](https://travis-ci.org/dyaroman/clock.dyaroman.com.svg?branch=master)](https://travis-ci.org/dyaroman/clock.dyaroman.com)
+# [clock](https://dyaroman.github.io/clock.dyaroman.com/)
