@@ -1,1 +1,1 @@
-# [clock](https://dyaroman.github.io/clock.dyaroman.com/)
+# [clock](https://dyaroman.github.io/clock/)
